@@ -1,0 +1,158 @@
+# SetupSpawn Shorts Scraper Configuration
+
+# YouTube Channel Configuration
+youtube:
+  channel_name: "SetupSpawn"
+  channel_url: "https://www.youtube.com/@SetupSpawn"
+  # Only process videos newer than this date (YYYY-MM-DD)
+  since_date: "2021-01-01"
+  # Maximum number of videos to process per run (0 = no limit)
+  max_videos: 1000
+
+# API Keys and Credentials
+api_keys:
+  # OpenAI API key for gpt-4.1-mini text parsing and vision analysis
+  openai_api_key: "${OPENAI_API_KEY}"
+
+  # AssemblyAI API key for fallback transcription
+  assemblyai_api_key: "${ASSEMBLYAI_API_KEY}"
+
+# Rate Limiting and Retry Configuration
+rate_limits:
+  # OpenAI API calls per minute
+  openai_rpm: 60
+  
+  # AssemblyAI API calls per minute
+  assemblyai_rpm: 30
+  
+  # Retry attempts for failed API calls
+  max_retries: 3
+  
+  # Delay between retries (seconds)
+  retry_delay: 5
+
+# Processing Configuration
+processing:
+  # Skip phases by default (can be overridden via CLI)
+  default_skip_phases: []
+  
+  # Frame extraction settings for vision analysis
+  frame_extraction:
+    # Extract frames around "this" trigger word mentions (seconds before/after)
+    context_window: 2.0
+
+    # Maximum frames to extract per video (1 = only first "this" occurrence)
+    max_frames_per_video: 1
+
+    # Image quality (1-100)
+    jpeg_quality: 85
+
+    # Retain frame images after processing (don't delete)
+    retain_frames: true
+
+    # Use transcript timing for precise frame extraction around "this" trigger
+    use_transcript_timing: true
+
+    # Multi-frame extraction for "this" trigger timing
+    multi_frame_extraction:
+      # Enable multi-frame extraction strategy
+      enabled: true
+
+      # Number of frames to extract (overrides max_frames_per_video when enabled)
+      frame_count: 3
+
+      # Time intervals (seconds) after "this" timestamp to extract frames
+      frame_intervals: [0, 1.0, 2.0]
+
+      # Enable early termination when high confidence URL is found
+      early_termination: true
+
+      # Confidence threshold for early termination (0-100)
+      confidence_threshold: 80
+
+# Database Configuration
+database:
+  # SQLite database file path
+  db_path: "data/processed.db"
+  
+  # Enable WAL mode for better concurrency
+  wal_mode: true
+
+# Logging Configuration
+logging:
+  # Log level: DEBUG, INFO, WARNING, ERROR
+  level: "INFO"
+  
+  # Log format: human, json
+  format: "human"
+  
+  # Log file path (relative to project root)
+  file_path: "data/exports/scraper.log"
+  
+  # Rotate log files when they exceed this size (MB)
+  max_file_size_mb: 10
+  
+  # Keep this many old log files
+  backup_count: 5
+
+# Export Configuration
+export:
+  # CSV export settings
+  csv:
+    # Include headers in CSV files
+    include_headers: true
+    
+    # Date format for filename timestamps
+    date_format: "%Y%m%d_%H%M%S"
+    
+    # Columns to include in export
+    columns:
+      - "video_id"
+      - "video_url"
+      - "video_title"
+      - "published_at"
+      - "website"
+      - "use"
+      - "details"
+      - "frame_path"
+
+# Audio Cache Configuration
+audio_cache:
+  # Local audio cache directory
+  cache_dir: "data/audio_cache"
+
+  # Audio format preferences
+  audio_format: "wav"  # wav, mp3, m4a
+  audio_quality: "best"
+
+  # Cache management
+  max_cache_size_gb: 5.0
+  cleanup_after_days: 30
+  keep_successful_transcripts: true
+
+  # Download settings
+  download_timeout: 300  # 5 minutes
+  max_retries: 3
+
+# Transcript Cache Configuration
+transcript_cache:
+  # Local transcript cache directory
+  cache_dir: "data/transcript_cache"
+
+  # Cache management
+  max_cache_size_mb: 100  # Maximum cache size in MB
+  cleanup_after_days: 90  # Keep transcripts for 90 days
+
+  # Performance settings
+  enable_caching: true  # Enable/disable transcript caching
+
+# Development and Testing
+development:
+  # Use mock responses for API calls during testing
+  mock_apis: false
+
+  # Dry run mode - don't make actual API calls or write files
+  dry_run: false
+
+  # Verbose output for debugging
+  verbose: false
