@@ -179,6 +179,7 @@ Your results will be saved in the `data/exports/` folder as CSV files. Each row 
 | 72 | Preview and edit AI-generated videos with free and paid plans | [invideo.io](http://invideo.io) | [Create an Entire Video with ChatGPT? #invideoAiPartner](https://www.youtube.com/watch?v=JQjzhbyTBQE) |
 | 73 | Analyze and filter out fake and unnatural Amazon product reviews | [fakespot.com](http://fakespot.com) | [Amazon Doesn't Tell You This!](https://www.youtube.com/watch?v=UWNOcFwrn1w) |
 | 74 | Resume keyword scanner to match your resume with job descriptions | [jobscan.co](http://jobscan.co) | [This Is Why You Can't Find A Job](https://www.youtube.com/watch?v=2ax2jMzsIzM) |
+| 74b | AI resume builder with free ATS checks (3/day no account) | [withresumeai.com](https://withresumeai.com/) | — |
 | 75 | Use GPT-4 and generate AI images on your phone for free | copilot app | [ChatGPT on Your Phone?](https://www.youtube.com/watch?v=q9mgX-nYqFU) |
 | 76 | Uncensor a screenshot | No website | [Don't Get Caught Doing This!](https://www.youtube.com/watch?v=ddA5O-pQQS0) |
 | 77 | Play a challenging and infuriating password creation game | [neal.fun](http://neal.fun/password-game/) | [The Most Frustrating Game Ever](https://www.youtube.com/watch?v=lxJYBCaW97A) |
